@@ -1,0 +1,70 @@
+[
+    {
+        "check_name": "null_rate_monthly_charges",
+        "status": "PASS",
+        "value_found": 0.0,
+        "threshold": 0
+    },
+    {
+        "check_name": "null_rate_tenure",
+        "status": "PASS",
+        "value_found": 0.0,
+        "threshold": 0
+    },
+    {
+        "check_name": "value_range_tenure",
+        "status": "PASS",
+        "value_found": {
+            "min": "0",
+            "max": "72"
+        },
+        "threshold": {
+            "min": 0,
+            "max": 100
+        }
+    },
+    {
+        "check_name": "value_range_monthly_charges",
+        "status": "PASS",
+        "value_found": {
+            "min": 18.25,
+            "max": 118.75
+        },
+        "threshold": {
+            "min": 0,
+            "max": null
+        }
+    },
+    {
+        "check_name": "allowed_values_contract",
+        "status": "PASS",
+        "value_found": [
+            "Two year",
+            "Month-to-month",
+            "One year"
+        ],
+        "threshold": [
+            "Two year",
+            "Month-to-month",
+            "One year"
+        ]
+    },
+    {
+        "check_name": "row_count",
+        "status": "PASS",
+        "value_found": 7043,
+        "threshold": 7000
+    },
+    {
+        "check_name": "no_duplicates_customer_id",
+        "status": "PASS",
+        "value_found": "0",
+        "threshold": 0
+    },
+    {
+        "check_name": "churn_distribution",
+        "status": "PASS",
+        "value_found": 0,
+        "threshold": "Informational"
+    }
+]

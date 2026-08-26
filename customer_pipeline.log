@@ -1,0 +1,78 @@
+2026-08-07 12:24:59,574 - INFO - Pipeline started at 2026-08-07 12:24:59.574921
+2026-08-07 12:24:59,576 - INFO - Loading data from D:\projectpart1\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-08-07 12:24:59,615 - INFO - Loaded 7043 rows
+2026-08-07 12:24:59,616 - INFO - Initializing cleaner
+2026-08-07 12:24:59,618 - INFO - CustomerCleaner initialized with DataFrame shape (7043, 21)
+2026-08-07 12:24:59,618 - INFO - Starting data cleaning pipeline
+2026-08-07 12:24:59,619 - INFO - Standardizing column names
+2026-08-07 12:24:59,619 - INFO - Column standardization completed
+2026-08-07 12:24:59,620 - INFO - Fixing total_charges column
+2026-08-07 12:24:59,632 - INFO - Converted total_charges to numeric. Blank rows affected: 11
+2026-08-07 12:24:59,633 - INFO - Normalizing binary columns
+2026-08-07 12:24:59,635 - INFO - Normalized column: partner
+2026-08-07 12:24:59,638 - INFO - Normalized column: dependents
+2026-08-07 12:24:59,640 - INFO - Normalized column: phone_service
+2026-08-07 12:24:59,642 - INFO - Normalized column: paperless_billing
+2026-08-07 12:24:59,644 - INFO - Normalized column: churn
+2026-08-07 12:24:59,644 - INFO - Binary column normalization completed
+2026-08-07 12:24:59,645 - INFO - Handling null values
+2026-08-07 12:24:59,645 - INFO - Filled 11 null values in total_charges using monthly_charges
+2026-08-07 12:24:59,646 - INFO - Data cleaning completed. Final DataFrame shape: (7043, 21)
+2026-08-07 12:24:59,646 - INFO - Cleaned data shape: (7043, 21)
+2026-08-07 12:24:59,648 - INFO - Starting feature engineering
+2026-08-07 12:24:59,695 - INFO - Feature engineering completed. Shape: (7043, 27)
+2026-08-07 12:24:59,812 - INFO - Saved clean data to D:\projectpart1\telco2\outputs\cleaned_customer_data_20260807_122459.csv
+2026-08-07 12:24:59,813 - INFO - Saved feature data to D:\projectpart1\telco2\outputs\customer_features_20260807_122459.csv
+2026-08-07 12:24:59,813 - INFO - Pipeline completed in 0:00:00.238631
+2026-08-19 13:42:13,758 - INFO - Pipeline started at 2026-08-19 13:42:13.758028
+2026-08-19 13:42:13,758 - INFO - Loading data from D:\projectpart1\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-08-19 13:42:13,805 - INFO - Loaded 7043 rows
+2026-08-19 13:42:13,805 - INFO - Initializing cleaner
+2026-08-19 13:42:13,807 - INFO - CustomerCleaner initialized with DataFrame shape (7043, 21)
+2026-08-19 13:42:13,807 - INFO - Starting data cleaning pipeline
+2026-08-19 13:42:13,807 - INFO - Standardizing column names
+2026-08-19 13:42:13,808 - INFO - Column standardization completed
+2026-08-19 13:42:13,808 - INFO - Fixing total_charges column
+2026-08-19 13:42:13,837 - INFO - Converted total_charges to numeric. Blank rows affected: 11
+2026-08-19 13:42:13,837 - INFO - Normalizing binary columns
+2026-08-19 13:42:13,840 - INFO - Normalized column: partner
+2026-08-19 13:42:13,841 - INFO - Normalized column: dependents
+2026-08-19 13:42:13,843 - INFO - Normalized column: phone_service
+2026-08-19 13:42:13,845 - INFO - Normalized column: paperless_billing
+2026-08-19 13:42:13,846 - INFO - Normalized column: churn
+2026-08-19 13:42:13,846 - INFO - Binary column normalization completed
+2026-08-19 13:42:13,846 - INFO - Handling null values
+2026-08-19 13:42:13,847 - INFO - Filled 11 null values in total_charges using monthly_charges
+2026-08-19 13:42:13,848 - INFO - Data cleaning completed. Final DataFrame shape: (7043, 21)
+2026-08-19 13:42:13,848 - INFO - Cleaned data shape: (7043, 21)
+2026-08-19 13:42:13,848 - INFO - Starting feature engineering
+2026-08-19 13:42:13,889 - INFO - Feature engineering completed. Shape: (7043, 27)
+2026-08-19 13:42:13,968 - INFO - Saved clean data to D:\projectpart1\telco2\outputs\cleaned_customer_data_20260819_134213.csv
+2026-08-19 13:42:13,968 - INFO - Saved feature data to D:\projectpart1\telco2\outputs\customer_features_20260819_134213.csv
+2026-08-19 13:42:13,968 - INFO - Pipeline completed in 0:00:00.210415
+2026-08-19 13:48:54,140 - INFO - Pipeline started at 2026-08-19 13:48:54.140866
+2026-08-19 13:48:54,140 - INFO - Loading data from D:\projectpart1\WA_Fn-UseC_-Telco-Customer-Churn.csv
+2026-08-19 13:48:54,187 - INFO - Loaded 7043 rows
+2026-08-19 13:48:54,187 - INFO - Initializing cleaner
+2026-08-19 13:48:54,189 - INFO - CustomerCleaner initialized with DataFrame shape (7043, 21)
+2026-08-19 13:48:54,189 - INFO - Starting data cleaning pipeline
+2026-08-19 13:48:54,189 - INFO - Standardizing column names
+2026-08-19 13:48:54,190 - INFO - Column standardization completed
+2026-08-19 13:48:54,190 - INFO - Fixing total_charges column
+2026-08-19 13:48:54,217 - INFO - Converted total_charges to numeric. Blank rows affected: 11
+2026-08-19 13:48:54,217 - INFO - Normalizing binary columns
+2026-08-19 13:48:54,219 - INFO - Normalized column: partner
+2026-08-19 13:48:54,221 - INFO - Normalized column: dependents
+2026-08-19 13:48:54,222 - INFO - Normalized column: phone_service
+2026-08-19 13:48:54,224 - INFO - Normalized column: paperless_billing
+2026-08-19 13:48:54,226 - INFO - Normalized column: churn
+2026-08-19 13:48:54,226 - INFO - Binary column normalization completed
+2026-08-19 13:48:54,226 - INFO - Handling null values
+2026-08-19 13:48:54,227 - INFO - Filled 11 null values in total_charges using monthly_charges
+2026-08-19 13:48:54,227 - INFO - Data cleaning completed. Final DataFrame shape: (7043, 21)
+2026-08-19 13:48:54,227 - INFO - Cleaned data shape: (7043, 21)
+2026-08-19 13:48:54,227 - INFO - Starting feature engineering
+2026-08-19 13:48:54,255 - INFO - Feature engineering completed. Shape: (7043, 27)
+2026-08-19 13:48:54,325 - INFO - Saved clean data to D:\projectpart1\telco2\outputs\cleaned_customer_data_20260819_134854.csv
+2026-08-19 13:48:54,325 - INFO - Saved feature data to D:\projectpart1\telco2\outputs\customer_features_20260819_134854.csv
+2026-08-19 13:48:54,326 - INFO - Pipeline completed in 0:00:00.185457

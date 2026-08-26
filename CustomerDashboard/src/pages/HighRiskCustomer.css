@@ -1,0 +1,72 @@
+/* Page styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* Count banner */
+h1 {
+  color: #1f2937;
+  margin: 20px 0;
+  font-size: 24px;
+}
+
+/* Buttons */
+.load-more {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.load-more:hover {
+  background-color: #1d4ed8;
+}
+
+/* Table */
+.high_risk_table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.high_risk_table th {
+  background-color: #2563eb;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.high_risk_table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.high_risk_table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.high_risk_table tr:hover {
+  background-color: #eef4ff;
+}
+
+/* Empty state */
+.no-results {
+  font-size: 18px;
+  color: #dc2626;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Loading and Error */
+p {
+  font-size: 16px;
+  color: #374151;
+}
