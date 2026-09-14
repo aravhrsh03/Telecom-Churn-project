@@ -6,7 +6,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import Depends, Query
-from churn_service import get_churn_summary, get_high_risk_customers
+from churn_service import get_churn_summary, get_high_risk_customers, get_customer_features
 
 from tables3 import Customer, CustomerCreate, CustomerResponse, CustomerUpdate, SessionLocal, init_db, ChurnPredictionRequest
 from ml.predict import predict_churn as model_predict_churn
@@ -23,8 +23,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from config import API_KEY
+
 api_key_header=APIKeyHeader(name="X-API-Key", auto_error=False)
-API_KEY="qwertyuiop"
 
 
 
@@ -116,6 +117,14 @@ def delete_customer(customer_id: str, db: Session=Depends(get_db), _: str=Depend
     db.delete(customer)
     db.commit()
     return customer
+
+
+@app.get("/customers/{customer_id}/features")
+def customer_features(customer_id: str, db: Session=Depends(get_db)):
+    features = get_customer_features(db, customer_id)
+    if not features:
+        raise HTTPException(status_code=404, detail="Customer not found")
+    return features
 
 
 @app.get("/churn/summary")

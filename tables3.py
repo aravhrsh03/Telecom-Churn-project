@@ -66,10 +66,11 @@ class IngestionLog(Base):
 
     id=Column(Integer, primary_key=True, autoincrement=True)
     source_file=Column(String(255), nullable=False)
-    loaded_at=Column(DateTime, server_default=func.now(), nullable=False)
+    loaded_at=Column(DateTime, nullable=False)  # always set explicitly by the caller
     row_count=Column(Integer, nullable=False)
     distinct_customer_ids=Column(Integer, nullable=False)
     status=Column(String(50), nullable=False)
+    reason=Column(String(255), nullable=True)
 
 
 class CustomerCreate(BaseModel):
@@ -172,7 +173,9 @@ class ChurnPredictionRequest(BaseModel):
     model_config=ConfigDict(from_attributes=True)
 
 
-engine=create_engine("mysql+mysqlconnector://root:root@localhost:3306/proj")
+from config import DATABASE_URL
+
+engine=create_engine(DATABASE_URL)
 SessionLocal=sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 

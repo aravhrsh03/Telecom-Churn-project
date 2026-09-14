@@ -3,6 +3,36 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 
+FEATURE_COLUMNS = [
+    "tenure_bucket", "high_charge_flag", "service_count", "is_long_term_customer",
+    "has_streaming_bundle", "auto_pay_flag", "monthly_charges", "total_charges",
+]
+
+
+def get_customer_features(db: Session, customer_id: str) -> Optional[Dict[str, Any]]:
+    """
+    API4 -- serve the full engineered feature row for one customer from
+    customer_ml_features, so the ML side (and the AI assistant's tools) never
+    needs direct DB access to recompute features by hand.
+    """
+    row = db.execute(
+        text(
+            "SELECT customer_id, tenure, monthly_charges, total_charges, tenure_bucket, "
+            "high_charge_flag, service_count, is_long_term_customer, has_streaming_bundle, "
+            "auto_pay_flag, contract, internet_service, gender, senior_citizen, partner, "
+            "dependents, phone_service, multiple_lines, online_security, online_backup, "
+            "device_protection, tech_support, streaming_tv, streaming_movies, "
+            "paperless_billing, payment_method, churn "
+            "FROM customer_ml_features WHERE customer_id = :cid"
+        ),
+        {"cid": customer_id},
+    ).mappings().first()
+
+    if row is None:
+        return None
+    return dict(row)
+
+
 def get_churn_summary(db: Session) -> Dict[str, Any]:
     """
     Return:
