@@ -1,0 +1,19 @@
+[
+  {"id": 1, "group": "single_tool", "question": "What is our overall churn rate?", "expected_tools": ["get_churn_summary"]},
+  {"id": 2, "group": "single_tool", "question": "What plan does customer 7590-VHVEG have?", "expected_tools": ["get_customer_profile"]},
+  {"id": 3, "group": "single_tool", "question": "List the top 5 highest-risk customers.", "expected_tools": ["get_high_risk_customers"]},
+  {"id": 4, "group": "single_tool", "question": "What's the churn rate for Fiber optic internet customers specifically?", "expected_tools": ["get_churn_summary"]},
+  {"id": 5, "group": "single_tool", "question": "What's the predicted churn risk for customer 7590-VHVEG?", "expected_tools": ["predict_churn"]},
+
+  {"id": 6, "group": "multi_tool", "question": "Is customer 7590-VHVEG one of our high-risk customers, and what's their predicted risk score?", "expected_tools": ["get_high_risk_customers", "predict_churn"]},
+  {"id": 7, "group": "multi_tool", "question": "Customer 3668-QPYBK has a month-to-month contract. What would their churn risk look like if they instead had the same tenure and monthly charge but a two-year contract?", "expected_tools": ["get_customer_profile", "predict_churn"]},
+  {"id": 8, "group": "multi_tool", "question": "Of our top 5 high-risk customers, how many already have a model-predicted risk score above 60%?", "expected_tools": ["get_high_risk_customers", "predict_churn"]},
+  {"id": 9, "group": "multi_tool", "question": "What's the overall churn rate, and how does customer 9237-HQITU's predicted risk compare to that average?", "expected_tools": ["get_churn_summary", "predict_churn"]},
+  {"id": 10, "group": "multi_tool", "question": "Give me customer 7795-CFOCW's profile and their churn prediction.", "expected_tools": ["get_customer_profile", "predict_churn"]},
+
+  {"id": 11, "group": "unanswerable", "question": "Why do customers really leave -- what do they say in their exit interviews?", "expected_tools": []},
+  {"id": 12, "group": "unanswerable", "question": "What will our churn rate be next quarter?", "expected_tools": []},
+  {"id": 13, "group": "unanswerable", "question": "Which competitor are our churned customers switching to?", "expected_tools": []},
+  {"id": 14, "group": "unanswerable", "question": "What's customer 0000-FAKE's profile?", "expected_tools": ["get_customer_profile"], "note": "answerable tool call, but the ID doesn't exist -- correct behavior is an honest 'not found', not a fabricated profile"},
+  {"id": 15, "group": "unanswerable", "question": "What's the average customer satisfaction score for our high-risk customers?", "expected_tools": []}
+]

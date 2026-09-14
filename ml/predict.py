@@ -104,6 +104,18 @@ def _score(df: pd.DataFrame) -> Dict[str, Any]:
     }
 
 
+def predict_from_feature_row(row: Dict[str, Any]) -> Dict[str, Any]:
+    """Score an already-known-real feature row directly (e.g. one already
+    loaded from customer_ml_features.csv/DB by the caller) -- no DB round
+    trip. Used by batch_score.py to score all 7,043 customers without
+    issuing 7,043 separate queries."""
+    df = build_feature_row(row)
+    result = _score(df)
+    result["mode"] = "real_customer"
+    result["assumptions"] = []
+    return result
+
+
 def predict_from_customer_id(customer_id: str) -> Optional[Dict[str, Any]]:
     """The exact-answer path: pull the customer's real engineered feature
     row and score it. No approximation of any kind."""

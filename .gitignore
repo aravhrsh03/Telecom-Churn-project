@@ -10,6 +10,10 @@ __pycache__/
 .env
 .env.local
 
+# Phase 8 runtime artifacts
+audit_log.jsonl
+audit_findings.json
+
 # Node
 node_modules/
 

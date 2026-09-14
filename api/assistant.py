@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional
 
 import anthropic
 
+import audit_log
 import project_context
 from api.tools import TOOLS, execute_tool
 from config import ANTHROPIC_MODEL_STRONG, ASSISTANT_MAX_RESPONSE_TOKENS, ASSISTANT_MAX_TOOL_ITERATIONS, anthropic_client
@@ -98,6 +99,7 @@ def chat(
 
         if response.stop_reason != "tool_use":
             reply_text = "".join(b.text for b in response.content if b.type == "text")
+            audit_log.record(message, tool_trail, total_usage, iterations=iteration + 1, model=model)
             return {
                 "reply": reply_text,
                 "tool_calls": tool_trail,
@@ -123,6 +125,7 @@ def chat(
         messages.append({"role": "user", "content": tool_results})
         kwargs["messages"] = messages
 
+    audit_log.record(message, tool_trail, total_usage, iterations=ASSISTANT_MAX_TOOL_ITERATIONS, model=model, error="tool_loop_exceeded")
     raise ToolLoopExceeded(
         f"Assistant requested more than {ASSISTANT_MAX_TOOL_ITERATIONS} tool round-trips for one message."
     )

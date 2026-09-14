@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Phase 8, Lab AI4 -- runs ci/review_diff.py before code reaches the shared
+# repo. Enable it once per clone with:
+#   git config core.hooksPath .githooks
+#
+# Reviews everything about to be pushed that isn't already on the remote
+# tracking branch. Blocks the push (non-zero exit) if review_diff.py finds
+# a real defect.
+
+remote="$1"
+range="@{u}..HEAD"
+
+if ! git rev-parse "@{u}" >/dev/null 2>&1; then
+    # No upstream configured yet (e.g. first push of a new branch) -- review
+    # against the default branch instead of failing outright.
+    range="origin/main..HEAD"
+fi
+
+diff_text="$(git diff "$range")"
+
+if [ -z "$diff_text" ]; then
+    echo "pre-push: nothing new to review."
+    exit 0
+fi
+
+echo "pre-push: running ci/review_diff.py on $range ..."
+echo "$diff_text" | python ci/review_diff.py
+exit_code=$?
+
+if [ $exit_code -ne 0 ]; then
+    echo ""
+    echo "pre-push: review_diff.py found a defect above -- push blocked."
+    echo "Fix it, or if it's a false positive, push with --no-verify to bypass this hook."
+fi
+
+exit $exit_code
