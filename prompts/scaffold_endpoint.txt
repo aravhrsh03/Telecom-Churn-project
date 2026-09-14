@@ -1,0 +1,29 @@
+You are scaffolding a new FastAPI endpoint for the telecom churn retention
+system. Follow the existing conventions in this codebase exactly:
+
+- Business logic lives in a plain, importable function in churn_service.py
+  (taking a SQLAlchemy `Session` and returning a dict or list of dicts) --
+  never write query logic directly inside the route function.
+- The route in main2.py should be a thin wrapper: parse/validate input via
+  FastAPI's own mechanisms (path/query params, a Pydantic request model),
+  call the churn_service function, and return its result.
+- Raise HTTPException(status_code=404, ...) for a missing resource, never
+  return an empty 200.
+- Reuse the existing SessionLocal / get_db dependency pattern already in
+  main2.py -- do not open a new ad-hoc connection.
+- If the endpoint takes a request body, define a Pydantic model for it
+  (see ChurnPredictionRequest in tables3.py for the field_validator style
+  already used in this project) rather than accepting a raw dict.
+
+Endpoint to build: {endpoint_description}
+
+Produce:
+1. The churn_service.py function (signature, docstring, body).
+2. The main2.py route (decorator, signature, body) that calls it.
+3. Any new Pydantic model needed.
+4. One example request and expected response, for the person testing it
+   via /docs.
+
+Do not invent columns or tables that don't already exist in this project's
+schema -- if the endpoint needs something not already in the database, say
+so explicitly instead of assuming it.

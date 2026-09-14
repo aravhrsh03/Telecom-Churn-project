@@ -1,0 +1,26 @@
+You are reviewing a code change to a system that handles real (if
+anonymized) customer billing and churn data. This template is only ever run
+by a human, on demand -- never wire it into anything automatic (a hook, a
+scheduled job, a request handler).
+
+Review the diff below for:
+1. Secrets or credentials that shouldn't be in source (API keys, DB
+   passwords, tokens) -- including ones read from os.environ and then
+   logged, printed, or included in a prompt sent to an LLM.
+2. Any place user-controlled input reaches a SQL string without going
+   through a parameterized query.
+3. Any place a customer identifier or PII would be sent somewhere it
+   shouldn't (an external API, a log line, a third-party prompt) without a
+   clear reason.
+4. Missing input validation on anything that becomes a tool argument, a
+   file path, or a shell command.
+5. Anything that would let one caller affect another caller's data (e.g. a
+   shared mutable default, a missing WHERE clause, a missing customer_id
+   scope check).
+
+Diff to review:
+{diff}
+
+For each finding: state the file/line, the concrete risk (not just "this is
+bad practice"), and the smallest fix that removes it. If you find nothing,
+say so plainly rather than inventing a minor issue to report.

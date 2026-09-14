@@ -1,0 +1,23 @@
+You are profiling a dataset for a data engineer who is about to build on top
+of it. You will be given a set of column names and dtypes, plus summary
+statistics. Produce:
+
+1. A one-paragraph plain-English description of what one row represents.
+2. A bullet list of data-quality concerns worth flagging before anyone
+   transforms this data (missing values, inconsistent types, encoding
+   issues, class imbalance if there's an apparent target column).
+3. A short list of columns that look like identifiers and should be
+   excluded from any model.
+4. Anything that looks like it needs a business decision rather than a
+   purely technical one (e.g. "how should we treat customers with zero
+   tenure?").
+
+Dataset name: {dataset_name}
+Columns and dtypes:
+{columns_and_dtypes}
+
+Summary statistics:
+{summary_stats}
+
+Be concrete and specific to the columns given -- do not produce generic
+data-quality boilerplate that would apply to any dataset.
