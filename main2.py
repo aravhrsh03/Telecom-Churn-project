@@ -1,7 +1,8 @@
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import APIKeyHeader
+from pydantic import BaseModel
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,6 +11,7 @@ from churn_service import get_churn_summary, get_high_risk_customers, get_custom
 
 from tables3 import Customer, CustomerCreate, CustomerResponse, CustomerUpdate, SessionLocal, init_db, ChurnPredictionRequest
 from ml.predict import predict_churn as model_predict_churn
+from api.assistant import ToolLoopExceeded, chat as assistant_chat
 
 app=FastAPI(title="Telco Customer API")
 
@@ -143,3 +145,20 @@ def predict_churn(payload: ChurnPredictionRequest):
         contract_type=payload.contract_type,
         service_count=payload.service_count
     )
+
+
+class AssistantChatRequest(BaseModel):
+    message: str
+    history: List[Dict[str, Any]] = []
+    use_thinking: bool = False
+
+
+@app.post("/assistant/chat")
+def assistant_chat_endpoint(payload: AssistantChatRequest):
+    try:
+        return assistant_chat(payload.message, payload.history, use_thinking=payload.use_thinking)
+    except ToolLoopExceeded as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    except RuntimeError as e:
+        # e.g. ANTHROPIC_API_KEY not configured
+        raise HTTPException(status_code=503, detail=str(e))

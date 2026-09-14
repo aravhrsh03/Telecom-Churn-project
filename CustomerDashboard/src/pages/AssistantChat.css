@@ -1,0 +1,135 @@
+.assistant-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.assistant-container .header-section {
+  text-align: center;
+}
+
+.assistant-container .description {
+  color: #666;
+  margin-top: 6px;
+}
+
+.chat-window {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-height: 320px;
+  max-height: 55vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.starter-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.starter-chip {
+  background: #f0f0ff;
+  border: 1px solid #d8d8fa;
+  color: #4c3fa8;
+  border-radius: 16px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.starter-chip:hover {
+  background: #e4e2ff;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chat-message.assistant {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.chat-bubble {
+  padding: 10px 14px;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.chat-message.user .chat-bubble {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-message.assistant .chat-bubble {
+  background: #f0f0f0;
+  color: #222;
+  border-bottom-left-radius: 2px;
+}
+
+.chat-bubble.typing {
+  color: #888;
+  font-style: italic;
+}
+
+.tool-trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.tool-chip {
+  font-size: 12px;
+  background: #eef;
+  border: 1px solid #ccd;
+  border-radius: 10px;
+  padding: 2px 8px;
+  color: #445;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input-row input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.chat-input-row input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.retry-btn {
+  margin-left: 12px;
+}
+
+@media (max-width: 768px) {
+  .chat-message {
+    max-width: 95%;
+  }
+}

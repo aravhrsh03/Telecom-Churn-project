@@ -4,6 +4,7 @@ import ChurnSummary from './pages/ChurnSummary';
 import CustomerSearch from './pages/CustomerSearch/CustomerSearch';
 import HighRiskCustomer from './pages/HighRiskCustomers';
 import ChurnPrediction from './pages/ChurnPrediction';
+import AssistantChat from './pages/AssistantChat';
 
 
 function App() {
@@ -40,6 +41,12 @@ function App() {
         >
           Churn Prediction
         </button>
+        <button
+          className={`tab-button ${activeTab==='assistant' ? 'active' : ''}`}
+          onClick={()=> setActiveTab('assistant')}
+        >
+          Retention Assistant
+        </button>
       </nav>
 
       <main className="tab-content">
@@ -47,6 +54,7 @@ function App() {
         {activeTab==='search' && <CustomerSearch />}
         {activeTab==='highrisk' && <HighRiskCustomer />}
         {activeTab==='prediction' && <ChurnPrediction />}
+        {activeTab==='assistant' && <AssistantChat />}
       </main>
     </div>
   );

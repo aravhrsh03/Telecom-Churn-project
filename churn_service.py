@@ -9,6 +9,27 @@ FEATURE_COLUMNS = [
 ]
 
 
+def get_customer_profile(db: Session, customer_id: str) -> Optional[Dict[str, Any]]:
+    """
+    Shared by GET /customers/{id} and the assistant's get_customer_profile
+    tool (Lab AI2) -- one implementation, not duplicated business logic.
+    """
+    row = db.execute(
+        text(
+            "SELECT customer_id, gender, senior_citizen, partner, dependents, tenure, "
+            "phone_service, multiple_lines, internet_service, online_security, online_backup, "
+            "device_protection, tech_support, streaming_tv, streaming_movies, contract, "
+            "paperless_billing, payment_method, monthly_charges, total_charges, churn "
+            "FROM stg_telco_customer WHERE customer_id = :cid"
+        ),
+        {"cid": customer_id},
+    ).mappings().first()
+
+    if row is None:
+        return None
+    return dict(row)
+
+
 def get_customer_features(db: Session, customer_id: str) -> Optional[Dict[str, Any]]:
     """
     API4 -- serve the full engineered feature row for one customer from
