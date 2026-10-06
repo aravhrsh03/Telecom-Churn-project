@@ -24,3 +24,9 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+# Editor / JVM crash dumps / local run outputs
+.vscode/
+hs_err_pid*.log
+replay_pid*.log
+*.log
+outputs/
